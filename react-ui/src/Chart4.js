@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Bar} from 'react-chartjs-2';
+import {HorizontalBar} from 'react-chartjs-2';
 
 class Chart4 extends Component {
   state = {
@@ -30,21 +30,19 @@ class Chart4 extends Component {
     let values = []
     let colors = []
     if (this.state.outcome.length !== 0){
-        console.log('state: ' + this.state.outcome);
         for(var i = 0; i < this.state.outcome.length; i++){
 
             labels.push(this.state.outcome[i]['PLAY_OUTCOME']);
-            console.log(this.state.outcome[i])
-            values.push(this.state.outcome[i]['round']);
             colors.push(this.getRandomColor())
         }
-        console.log("values: " + values)
+        console.log("tags: " + labels)
     }
 
     const data = {
         labels: labels, 
         datasets: [
-          {
+          { 
+            label: 'outcome',
             backgroundColor: colors,
             data: values
           }
@@ -52,8 +50,8 @@ class Chart4 extends Component {
       };
     return (
     <div className="App">
-        <h2> Hit Spin Rate vs. Outcome</h2>
-        <Bar data={data}
+        <h2> Average Hit Spin Rate vs. Outcome</h2>
+        <HorizontalBar data={data}
             height={500}
             width={700}
         />

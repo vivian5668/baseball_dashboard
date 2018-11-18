@@ -30,21 +30,19 @@ class Chart3 extends Component {
     let values = []
     let colors = []
     if (this.state.outcome.length !== 0){
-        console.log('state: ' + this.state.outcome);
         for(var i = 0; i < this.state.outcome.length; i++){
 
             labels.push(this.state.outcome[i]['PLAY_OUTCOME']);
-            console.log(this.state.outcome[i])
             values.push(this.state.outcome[i]['round']);
             colors.push(this.getRandomColor())
         }
-        console.log("values: " + values)
     }
 
     const data = {
         labels: labels, 
         datasets: [
           {
+            label: 'outcome',
             backgroundColor: colors,
             data: values
           }
