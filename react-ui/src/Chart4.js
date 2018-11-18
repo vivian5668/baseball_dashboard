@@ -13,6 +13,7 @@ class Chart4 extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({outcome: JSON.parse(data)});
+        
       })
   }
     
@@ -31,11 +32,10 @@ class Chart4 extends Component {
     let colors = []
     if (this.state.outcome.length !== 0){
         for(var i = 0; i < this.state.outcome.length; i++){
-
             labels.push(this.state.outcome[i]['PLAY_OUTCOME']);
+            values.push(this.state.outcome[i]['round']);
             colors.push(this.getRandomColor())
         }
-        console.log("tags: " + labels)
     }
 
     const data = {
